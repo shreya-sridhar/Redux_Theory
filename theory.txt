@@ -100,13 +100,65 @@ const wrapInDiv = str => `<div>${str}</div>`
 const wrapInSpan = str => `<span>${str}</span>` => duplication
 
 replace 99, 100 with:
-const wrap = (type,str) => `<${type}>${str}</${type}>` => incorrect since the last input to pipe function needs 2 arguments
+const wrap = (type,str) => `<${type}>${str}</${type}>` => incorrect since the last input to pipe function needs 2 arguments so replace in pipe function as pipe(trim, toLowerCase, wrap("div")) -> but we cannot build a pipeline with functions and a string 
+(we have a function with 2 params but we need a function with 1 param -> hence currying)
+
+Currying allows us to take a function which has n args and returns one with a single param 
+
+eg:
+function add(a,b){
+    return a+b 
+}
+
+function add(a){
+    return function(b){
+        a+b
+    }
+}
+
+=> call as add(1)(5)
+
+Equivalently:
+
+const add2 = a => b => a+b;
+
+const wrap = type=> str => `<${type}>${str}</${type}>` 
+
 
 
 const toLowerCase = str => str.toLowerCase()
 
 const transform = pipe(trim, toLowerCase, wrapInDiv) -> changes order of operations to order we apply
 transform(input);
+
+Pure functions -> every time we call it with a given arg, it returns same results 
+
+no random values 
+no curr date/time 
+no global state (DOM, files, db,etc)
+
+Reducers must be pure!! => we cannot mutate params in pure functions, everything function needs is specified in params 
+
+Pure functions:
+- self documenting 
+- easy to test 
+- cacheable (saving computational time)
+
+
+Immutability:
+
+strings are immutable and objects are mutable
+
+"const" object => can change object attributes but cannot reassign object
+
+benefits:
+
+- predictable
+- faster to detect changes (compares by references instead of comparing by object properties)
+- concurrency 
+- 
+
+
 
 
 
