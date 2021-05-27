@@ -5,6 +5,174 @@ update data at store -> no need to sync data in different parts of UI, no need f
 
 Redux makes data flow transparent & predictable and centralizes application state
 
+Advantages:
+
+Redux Devtools -> chrome extension to debug
+
+(shows your previous actions which you can revert previous state and UI -> time travel debugging )
+
+LogRocket ->  devtools for production for every user. If user has problem, can reload app and check in the same state as user and debug! 
+
+- allows you to cache/preserve state (entire application is available on the client inside a single js object) and no re-downloding after re-navigation. State changes preserved.
+
+- predictable state changes 
+- easy debugging
+- implement/undo/redo features 
+- centralized state 
+- preserve page state 
+
+Cons:
+
+- complexity -> functional programming 
+- verbose -> write boilerplate code mostly 
+
+No need of redux:
+
+- for small-to-mid size apps 
+- tight budget
+- static pages 
+
+Webpack in package.json -> module bundler for js, split js in multiple files and webpack combines truncatechars_html
+
+Redux is based on functional programming.
+
+Functional Programming:
+
+breaking a problems in smaller problems - don't mutate or change data which are concise, easy to debug, efficient -> Clojure, Haskell languages
+, JS also sorta 
+
+-> Higher order functions -> takes function as argument or returns a function (eg:map, setTimeout)
+setTimeout(()=>  console.log("hello"),100)
+
+function sayHello(){
+console.log("Hello World!");
+}
+
+function greet(fnMessage){
+    console.log(fnMessage())
+}
+
+let fn = sayHello;
+fn()
+greet(sayHello);
+
+function sayHello(){
+    return function(){
+        return "Hello World"
+    }
+    }
+
+let fn = sayHello();
+let message = fn();
+
+Eg:
+
+w/o Redux
+
+let input = " javascript "
+let output = "<div>"+input.trim()+"</div>"
+
+w Redux 
+
+const trim = str => str.trim()
+const wrapInDiv = str => `<div>${str}</div>`
+const toLowerCase = str => str.toLowerCase()
+
+const result = wrapInDiv(toLowerCase(trim(input)));p
+
+
+Lodash -> library 
+
+import {compose, pipe} from 'lodash.fp'
+
+can make line 81 cleaner 
+
+const transform = compose(wrapInDiv, toLowerCase, trim) -> removes multiple parentheses 
+transform(input);
+]
+const transform = pipe(trim, toLowerCase, wrapInDiv) -> changes order of operations to order we apply
+transform(input);
+
+Currying : (popular functional programming technique)
+
+const trim = str => str.trim()
+const wrapInDiv = str => `<div>${str}</div>`
+const wrapInSpan = str => `<span>${str}</span>` => duplication
+
+replace 99, 100 with:
+const wrap = (type,str) => `<${type}>${str}</${type}>` => incorrect since the last input to pipe function needs 2 arguments
+
+
+const toLowerCase = str => str.toLowerCase()
+
+const transform = pipe(trim, toLowerCase, wrapInDiv) -> changes order of operations to order we apply
+transform(input);
+
+
+
+Redux has one big single JS store with mutiple stores. Never mutate/change this. We create new versions of store object so we have full history of state at every change.
+In normal apps, we have many JS objects
+
+Base is provider component. When store changes, re-renders app. 
+Smart (aware of redux) & Dumb components 
+smart components dispatch actions 
+
+Multiple reducers work on specific properties to create new store changes. and multiple reducers can change on same action/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
