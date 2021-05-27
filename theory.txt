@@ -1,0 +1,14 @@
+state mgmt library for JS apps - Angular, Vue, Reactjs, Vanilla JS
+
+Store => database from frontend
+update data at store -> no need to sync data in different parts of UI, no need for each component to maintain its own state
+
+Redux makes data flow transparent & predictable and centralizes application state
+
+
+
+
+
+
+
+
